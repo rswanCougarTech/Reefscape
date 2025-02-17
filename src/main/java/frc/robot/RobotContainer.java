@@ -48,6 +48,10 @@ import frc.robot.subsystems.elevator.Elevator;
 import frc.robot.subsystems.elevator.ElevatorIO;
 import frc.robot.subsystems.elevator.ElevatorIOTalonFX;
 import frc.robot.subsystems.elevator.ElevatorIOTalonFXSim;
+import frc.robot.subsystems.climber.Climber;
+import frc.robot.subsystems.climber.ClimberIO;
+import frc.robot.subsystems.climber.ClimberIOTalonFX;
+import frc.robot.subsystems.climber.ClimberIOTalonFXSim;
 import frc.robot.subsystems.operatorui.OperatorUI;
 import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.vision.VisionIO;
@@ -70,6 +74,7 @@ public class RobotContainer {
     private final Elevator elevator;
     private final CoralCone coralCone;
     private final AlgaeAcquirer algaeAcquirer;
+    private final Climber climber;
 
     @SuppressWarnings("unused")
     private final Vision vision;
@@ -106,6 +111,7 @@ public class RobotContainer {
                 elevator = new Elevator(new ElevatorIOTalonFX());
                 algaeAcquirer = new AlgaeAcquirer(new AlgaeAcquirerIONeo());
                 coralCone = new CoralCone(new CoralConeIONeo());
+                climber = new Climber(new ClimberIOTalonFX());
                 break;
 
             case SIM:
@@ -124,6 +130,7 @@ public class RobotContainer {
                 elevator = new Elevator(new ElevatorIOTalonFXSim());
                 algaeAcquirer = new AlgaeAcquirer(new AlgaeAcquirerIONeoSim());
                 coralCone = new CoralCone(new CoralConeIONeoSim());
+                climber = new Climber(new ClimberIOTalonFX());
                 break;
 
             default:
@@ -148,6 +155,8 @@ public class RobotContainer {
                 algaeAcquirer = new AlgaeAcquirer(new AlgaeAcquirerIO() {
                 });
                 coralCone = new CoralCone(new CoralConeIO() {
+                });
+                climber = new Climber(new ClimberIOTalonFX() {
                 });
                 break;
         }
@@ -194,7 +203,7 @@ public class RobotContainer {
                         }));
         // Configure the button bindings
         configureButtonBindings();
-        buttonBoard = new ButtonBoard(buttonBox1, buttonBox2, elevator, coralCone, algaeAcquirer);
+        buttonBoard = new ButtonBoard(buttonBox1, buttonBox2, elevator, coralCone, algaeAcquirer, climber);
         buttonBoard.configureButtonBindings();
 
     }
